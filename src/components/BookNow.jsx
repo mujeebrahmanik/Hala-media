@@ -79,7 +79,7 @@ const BookNow = () => {
               <input type="hidden" name="oid" value="00Da3000005DkLV" />
               <input type="hidden" name="last_name" value={formData.first_name || "N/A"} />
               <input type="hidden" name="company" value="Individual" />
-              <input type="hidden" name="retURL" value="https://hala-media.onrender.com/thank-you" />
+              <input type="hidden" name="retURL" value="https://hala-media.onrender.com" />
 
               {/* Visible Fields */}
               <div className="flex gap-2">
