@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Phone, Mail, MapPin } from "lucide-react";
+import { fbEvent } from "../utils/fbpixel";
 
 const BookNow = () => {
   const [formData, setFormData] = useState({
@@ -42,6 +43,8 @@ const BookNow = () => {
             event_label: 'Contact Form'
         });
     }
+
+    fbEvent("Lead", { source: "Contact Form" });
 
   };
 

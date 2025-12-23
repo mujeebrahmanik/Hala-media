@@ -6,6 +6,7 @@ import Testimonial from './components/Testimonial'
 import BookNow from './components/BookNow'
 import Footer from './components/Footer'
 import { FloatingWhatsApp } from 'react-floating-whatsapp';
+import { fbEvent } from './utils/fbpixel'
 
 function App() {
 
@@ -17,6 +18,8 @@ function App() {
           event_label: 'Calendly Success'
         });
       }
+
+      fbEvent("Purchase", { content_name: "Calendly Confirmed" });
     };
 
     window.addEventListener("message", handleCalendly);
