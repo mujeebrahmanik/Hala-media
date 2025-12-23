@@ -22,7 +22,7 @@ const BookNow = () => {
     const form = document.getElementById("sf-form");
     form.submit();
 
-    setStatus("✅ Lead submitted successfully!");
+    setStatus("✅ Form submitted successfully!");
     setFormData({
       first_name: "",
       last_name: "",
@@ -88,7 +88,7 @@ const BookNow = () => {
               id="sf-form"
               className="space-y-4"
               method="POST"
-              action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Da3000005DkLV"
+              action="https://webto.salesforce.com/servlet/servlet.WebToLead"
               target="hidden_iframe"
               onSubmit={handleSubmit}
             >
@@ -96,12 +96,12 @@ const BookNow = () => {
               <input
                 type="hidden"
                 name="company"
-                value="Individual" // required by Salesforce
+                value="Individual" 
               />
               <input
                 type="hidden"
                 name="retURL"
-                value="https://hala-media.onrender.com/thank-you"
+                value="https://hala-media.onrender.com"
               />
 
               <div className="flex gap-2">
