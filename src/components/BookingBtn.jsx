@@ -8,7 +8,7 @@ const BookingBtn = () => {
         <PopupButton
             url="https://calendly.com/mujeebrahmanikamaal/30min"
             rootElement={document.getElementById("root")}
-            text="Book a Strategy Call"
+            text="Book a Strategy Call "
             className="bg-gradient-to-r from-[#791BBA] to-blue-500 rounded-md py-2 px-4 text-white font-medium cursor-pointer"
         />
     </>
