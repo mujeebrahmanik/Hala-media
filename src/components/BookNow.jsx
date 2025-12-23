@@ -127,7 +127,7 @@ const BookNow = () => {
               </div>
 
               <input
-                type="text"
+                type="number"
                 name="mobile"
                 placeholder="Your Mobile"
                 value={formData.mobile}
