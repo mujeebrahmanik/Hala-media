@@ -15,16 +15,16 @@ const HeroSection = () => {
         </p>
 
         <div className="flex gap-4 justify-center flex-wrap">
-                <a className='bg-gradient-to-r from-[#791BBA] to-blue-500 rounded-md py-2 px-3 cursor-pointer'>Book your slot</a>
+                <a className='bg-gradient-to-r from-[#791BBA] to-blue-500 rounded-md py-2 px-3 cursor-pointer'>Book a Strategy Call</a>
                 <a className='border-2 border-[#791BBA] rounded-md py-2 px-3 hover:bg-[#791BBA] cursor-pointer'>Download Portfolio</a>
         </div>
 
         <div className="flex justify-center gap-6 mt-4 lg:flex-row flex-col">
-            <video autoPlay loop muted className='lg:w-1/2 rounded-lg'>
+            <video autoPlay loop muted playsInline className='lg:w-1/2 rounded-lg'>
               <source src={video2} type='video/mp4' />
                 Your browser doesnt support video tag
             </video>
-            <video autoPlay loop muted className='lg:w-1/2 rounded-lg'>
+            <video autoPlay loop muted playsInline className='lg:w-1/2 rounded-lg'>
               <source src={video1} type='video/mp4' />
                 Your browser doesnt support video tag
             </video>

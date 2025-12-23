@@ -39,7 +39,7 @@ const Services = () => {
         </div>
 
         <div className='flex justify-center items-center my-10 lg:my-15'>
-            <a className='border-2 border-[#791BBA] rounded-md py-2 px-3 hover:bg-[#791BBA] cursor-pointer'>Book Now</a>
+            <a className='border-2 border-[#791BBA] rounded-md py-2 px-3 hover:bg-[#791BBA] cursor-pointer'>Book a Strategy Call</a>
         </div>
     </div>
   )

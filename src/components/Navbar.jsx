@@ -15,7 +15,7 @@ const Navbar = () => {
             <div className="container px-4 mx-auto relative text-sm">
                 <div className="flex justify-between items-center">
                     <div className="flex items-center flex-shrik-0">
-                        <img src={logo} alt="Logo" className='h-15 w-full'/>
+                        <img src={logo} alt="Logo" className='h-15 lg:w-full'/>
                     </div>
 
                     <ul className='hidden lg:flex ml-14 space-x-12'>
