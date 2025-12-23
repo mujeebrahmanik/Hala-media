@@ -4,6 +4,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 const BookNow = () => {
   const [formData, setFormData] = useState({
     first_name: "",
+    last_name:"",
     email: "",
     mobile: "",
     description: "",
@@ -19,8 +20,7 @@ const BookNow = () => {
 
     const formBody = new URLSearchParams({
       oid: "00Da3000005DkLV",
-      last_name: formData.first_name || "N/A",
-      company: "Individual",
+      company: "hemito",
       retURL: "https://hala-media.onrender.com",
       ...formData,
     });
@@ -103,13 +103,25 @@ const BookNow = () => {
                 <input
                   type="text"
                   name="first_name"
-                  placeholder="Your Name"
+                  placeholder="Your first Name"
                   value={formData.first_name}
                   onChange={handleChange}
                   className="w-full p-3 rounded-lg border-white border bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#791BBA]"
                   required
                 />
+
                 <input
+                  type="text"
+                  name="last_name"
+                  placeholder="Your last Name"
+                  value={formData.last_name}
+                  onChange={handleChange}
+                  className="w-full p-3 rounded-lg border-white border bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#791BBA]"
+                  required
+                />
+              </div>
+
+              <input
                   type="text"
                   name="mobile"
                   placeholder="Your Mobile"
@@ -118,7 +130,6 @@ const BookNow = () => {
                   className="w-full p-3 rounded-lg border-white border bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#791BBA]"
                   required
                 />
-              </div>
 
               <input
                 type="email"
