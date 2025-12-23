@@ -19,7 +19,7 @@ function App() {
         });
       }
 
-      fbEvent("Purchase", { content_name: "Calendly Confirmed" });
+      fbEvent("CompleteRegistration", { content_name: "Calendly Confirmed" });
     };
 
     window.addEventListener("message", handleCalendly);
