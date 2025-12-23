@@ -4,7 +4,7 @@ import { Phone, Mail, MapPin } from "lucide-react";
 const BookNow = () => {
   const [formData, setFormData] = useState({
     first_name: "",
-    last_name:"",
+    last_name: "",
     email: "",
     mobile: "",
     description: "",
@@ -15,30 +15,21 @@ const BookNow = () => {
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = async (e) => {
-    e.preventDefault(); 
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    const formBody = new URLSearchParams({
-      oid: "00Da3000005DkLV",
-      company: "hemito",
-      retURL: "https://hala-media.onrender.com",
-      ...formData,
+    // Salesforce Web-to-Lead form submission via hidden iframe
+    const form = document.getElementById("sf-form");
+    form.submit();
+
+    setStatus("✅ Lead submitted successfully!");
+    setFormData({
+      first_name: "",
+      last_name: "",
+      email: "",
+      mobile: "",
+      description: "",
     });
-
-    try {
-      await fetch(
-        "https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8",
-        {
-          method: "POST",
-          body: formBody,
-        }
-      );
-
-      setStatus("✅ Lead submitted successfully!");
-      setFormData({ first_name: "", email: "", mobile: "", description: "" });
-    } catch (err) {
-      setStatus("❌ Submission failed. Please try again.");
-    }
   };
 
   return (
@@ -96,9 +87,23 @@ const BookNow = () => {
             <form
               id="sf-form"
               className="space-y-4"
+              method="POST"
+              action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8&orgId=00Da3000005DkLV"
+              target="hidden_iframe"
               onSubmit={handleSubmit}
             >
-              {/* Visible Fields */}
+              <input type="hidden" name="oid" value="00Da3000005DkLV" />
+              <input
+                type="hidden"
+                name="company"
+                value="Individual" // required by Salesforce
+              />
+              <input
+                type="hidden"
+                name="retURL"
+                value="https://hala-media.onrender.com/thank-you"
+              />
+
               <div className="flex gap-2">
                 <input
                   type="text"
@@ -122,14 +127,14 @@ const BookNow = () => {
               </div>
 
               <input
-                  type="text"
-                  name="mobile"
-                  placeholder="Your Mobile"
-                  value={formData.mobile}
-                  onChange={handleChange}
-                  className="w-full p-3 rounded-lg border-white border bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#791BBA]"
-                  required
-                />
+                type="text"
+                name="mobile"
+                placeholder="Your Mobile"
+                value={formData.mobile}
+                onChange={handleChange}
+                className="w-full p-3 rounded-lg border-white border bg-transparent text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#791BBA]"
+                required
+              />
 
               <input
                 type="email"
@@ -159,9 +164,13 @@ const BookNow = () => {
               </button>
             </form>
 
-            {status && (
-              <p className="mt-4 text-white font-medium">{status}</p>
-            )}
+            <iframe
+              name="hidden_iframe"
+              style={{ display: "none" }}
+              title="hidden_iframe"
+            ></iframe>
+
+            {status && <p className="mt-4 text-white font-medium">{status}</p>}
           </div>
         </div>
       </div>
