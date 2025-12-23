@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Navbar from './components/Navbar'
 import HeroSection from './components/HeroSection'
 import Services from './components/Services'
@@ -8,6 +8,21 @@ import Footer from './components/Footer'
 import { FloatingWhatsApp } from 'react-floating-whatsapp';
 
 function App() {
+
+  useEffect(() => {
+    const handleCalendly = (e) => {
+      if (e.data?.event === "calendly.event_scheduled") {
+        window.gtag?.('event', 'calendly_confirmed', {
+          event_category: 'Booking',
+          event_label: 'Calendly Success'
+        });
+      }
+    };
+
+    window.addEventListener("message", handleCalendly);
+    return () => window.removeEventListener("message", handleCalendly);
+  }, []);
+
   const [count, setCount] = useState(0)
 
   return (

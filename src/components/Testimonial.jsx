@@ -1,5 +1,6 @@
 import React from 'react'
 import { testimonials } from '../items'
+import BookingBtn from './BookingBtn'
 
 const Testimonial = () => {
   return (
@@ -31,7 +32,7 @@ const Testimonial = () => {
         </div>
 
         <div className='flex justify-center items-center my-10 lg:my-15'>
-            <a className='border-2 border-[#791BBA] rounded-md py-2 px-3 hover:bg-[#791BBA] cursor-pointer'>Join Now</a>
+            <BookingBtn/>
         </div>
     </div>
   )

@@ -35,6 +35,14 @@ const BookNow = () => {
     setTimeout(()=>{
         setStatus(false)
     },3000)
+
+    if (window.gtag) {
+        window.gtag('event', 'lead_submit', {
+            event_category: 'Lead',
+            event_label: 'Contact Form'
+        });
+    }
+
   };
 
   return (

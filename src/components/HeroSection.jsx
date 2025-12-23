@@ -1,6 +1,7 @@
 import React from 'react'
 import video1 from '../assets/video1.MP4'
 import video2 from '../assets/video2.MP4'
+import BookingBtn from './BookingBtn'
 
 
 const HeroSection = () => {
@@ -15,7 +16,7 @@ const HeroSection = () => {
         </p>
 
         <div className="flex gap-4 justify-center flex-wrap">
-                <a className='bg-gradient-to-r from-[#791BBA] to-blue-500 rounded-md py-2 px-3 cursor-pointer'>Book a Strategy Call</a>
+              <BookingBtn/>
                 <a className='border-2 border-[#791BBA] rounded-md py-2 px-3 hover:bg-[#791BBA] cursor-pointer'>Download Portfolio</a>
         </div>
 
