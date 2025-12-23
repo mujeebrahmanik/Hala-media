@@ -9,20 +9,43 @@ const BookNow = () => {
     description: "",
   });
 
+  const [status, setStatus] = useState("");
+
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    document.getElementById("sf-form").submit();
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
 
-    alert("Lead submitted successfully!");
-    setFormData({ first_name: "", email: "", mobile: "", description: "" });
+    const formBody = new URLSearchParams({
+      oid: "00Da3000005DkLV",
+      last_name: formData.first_name || "N/A",
+      company: "Individual",
+      retURL: "https://hala-media.onrender.com",
+      ...formData,
+    });
+
+    try {
+      await fetch(
+        "https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8",
+        {
+          method: "POST",
+          body: formBody,
+        }
+      );
+
+      setStatus("✅ Lead submitted successfully!");
+      setFormData({ first_name: "", email: "", mobile: "", description: "" });
+    } catch (err) {
+      setStatus("❌ Submission failed. Please try again.");
+    }
   };
 
   return (
-    <div className="relative flex flex-col mt-10 border-b border-neutral-900 rounded-lg py-10 px-5 justify-center items-center" id="contact">
-      <iframe name="hidden_iframe" style={{ display: "none" }}></iframe>
+    <div
+      className="relative flex flex-col mt-10 border-b border-neutral-900 rounded-lg py-10 px-5 justify-center items-center"
+      id="contact"
+    >
       <div className="absolute inset-0 rounded-lg bg-gradient-to-r from-[#6D28D9]/80 to-[#020203]/80 backdrop-blur-xl -z-10"></div>
 
       <div className="text-center relative z-10 w-full max-w-6xl">
@@ -34,7 +57,8 @@ const BookNow = () => {
           {/* Left Info */}
           <div className="flex flex-col gap-6 text-start">
             <p className="text-md font-medium px-3 text-white">
-              Let’s turn your ideas into impact. Book your free discovery call and see why ambitious brands choose to grow with us.
+              Let’s turn your ideas into impact. Book your free discovery call
+              and see why ambitious brands choose to grow with us.
             </p>
 
             <ul className="space-y-4 text-white">
@@ -58,7 +82,9 @@ const BookNow = () => {
                 </div>
                 <div className="ml-0">
                   <p className="font-medium text-md">Workspace Downtown</p>
-                  <p className="text-white">Next to Dubai Mall / Burj Khalifa Metro Station</p>
+                  <p className="text-white">
+                    Next to Dubai Mall / Burj Khalifa Metro Station
+                  </p>
                   <p className="text-white">Dubai, United Arab Emirates</p>
                 </div>
               </li>
@@ -69,18 +95,9 @@ const BookNow = () => {
           <div className="px-3">
             <form
               id="sf-form"
-              action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8"
-              method="POST"
-              target="hidden_iframe"
               className="space-y-4"
               onSubmit={handleSubmit}
             >
-              {/* Required hidden fields */}
-              <input type="hidden" name="oid" value="00Da3000005DkLV" />
-              <input type="hidden" name="last_name" value={formData.first_name || "N/A"} />
-              <input type="hidden" name="company" value="Individual" />
-              <input type="hidden" name="retURL" value="https://hala-media.onrender.com" />
-
               {/* Visible Fields */}
               <div className="flex gap-2">
                 <input
@@ -93,7 +110,7 @@ const BookNow = () => {
                   required
                 />
                 <input
-                  type="number"
+                  type="text"
                   name="mobile"
                   placeholder="Your Mobile"
                   value={formData.mobile}
@@ -130,6 +147,10 @@ const BookNow = () => {
                 Send Message
               </button>
             </form>
+
+            {status && (
+              <p className="mt-4 text-white font-medium">{status}</p>
+            )}
           </div>
         </div>
       </div>
