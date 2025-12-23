@@ -10,7 +10,7 @@ const BookNow = () => {
     description: "",
   });
 
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState(false);
 
   const handleChange = (e) =>
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -22,7 +22,6 @@ const BookNow = () => {
     const form = document.getElementById("sf-form");
     form.submit();
 
-    setStatus("✅ Form submitted successfully!");
     setFormData({
       first_name: "",
       last_name: "",
@@ -30,6 +29,12 @@ const BookNow = () => {
       mobile: "",
       description: "",
     });
+
+    setStatus(true)
+
+    setTimeout(()=>{
+        setStatus(false)
+    },3000)
   };
 
   return (
@@ -127,7 +132,7 @@ const BookNow = () => {
               </div>
 
               <input
-                type="number"
+                type="text"
                 name="mobile"
                 placeholder="Your Mobile"
                 value={formData.mobile}
@@ -170,7 +175,7 @@ const BookNow = () => {
               title="hidden_iframe"
             ></iframe>
 
-            {status && <p className="mt-4 text-white font-medium">{status}</p>}
+            {status && <p className="mt-4 text-white font-medium">✅ Form submitted successfully!</p>}
           </div>
         </div>
       </div>
