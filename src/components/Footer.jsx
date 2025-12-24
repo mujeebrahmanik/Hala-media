@@ -1,6 +1,8 @@
 import React from 'react'
 import logo from '../assets/HM-Dots_white.png'
 import { Phone,Mail,MapPin,Instagram,Facebook,Twitter } from 'lucide-react'
+import { Link } from "react-scroll";
+
 
 const Footer = () => {
   return (
@@ -12,9 +14,9 @@ const Footer = () => {
         <div className="flex flex-col gap-6">
             <h6 className='font-medium'>Quick Links</h6>
             <ul className='text-sm text-neutral-300 space-y-2'>
-                <li className='underline'>Services</li>
-                <li className='underline'>Testmonials</li>
-                <li className='underline'>Book Now</li>
+                <li className='underline'><Link to='home' smooth={true} duration={500} className='cursor-pointer'>Home</Link></li>
+                <li className='underline'><Link to='services' smooth={true} duration={500} className='cursor-pointer'>Services</Link></li>
+                <li className='underline'><Link to='testimonials' smooth={true} duration={500} className='cursor-pointer'>Testimonials</Link></li>
             </ul>
         </div>
 
