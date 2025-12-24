@@ -17,7 +17,7 @@ const HeroSection = () => {
 
         <div className="flex gap-4 justify-center flex-wrap">
               <BookingBtn/>
-                <a className='border-2 border-[#791BBA] rounded-md py-2 px-3 hover:bg-[#791BBA] cursor-pointer'>Download Portfolio</a>
+                <a className='border-2 border-[#791BBA] rounded-md py-2 px-3 hover:bg-[#791BBA] cursor-pointer' href='/assets/Company Profile_Hala Media 2025.pdf' target='_blank' rel='noopener noreferrer'>Download Portfolio</a>
         </div>
 
         <div className="flex justify-center gap-6 mt-4 lg:flex-row flex-col">
